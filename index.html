@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>芸術鑑賞と言語表現のプロセスに関する調査</title>
+  
+  <script src="https://unpkg.com/jspsych@8.0.2"></script>
+  <link rel="stylesheet" href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css">
+  
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-likert@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.4.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+
+  <style>
+      body { font-family: 'Noto Sans JP', sans-serif; color: #333; margin: 0; }
+      
+      /* --- 上下分割・画像固定用レイアウト --- */
+      
+      /* 画像エリア（プリアンブル）を画面上部に固定する設定 */
+      .sticky-top-layout .jspsych-survey-likert-preamble {
+          position: sticky;       /* スクロール追従固定 */
+          top: 0;                 /* 画面の一番上に張り付く */
+          z-index: 100;           /* 他の要素より手前に表示 */
+          background-color: white;/* 背景を白にして、下の文字が透けないようにする */
+          padding: 10px 0;
+          border-bottom: 2px solid #eee; /* 下に境界線を入れる */
+          width: 100%;
+          margin-bottom: 20px;
+      }
+
+      /* 画像自体のサイズ設定 */
+      .fixed-img {
+          /* 画面を埋め尽くさないよう、高さに制限をかける */
+          height: 350px;          
+          width: auto;            /* 幅は比率維持 */
+          max-width: 100%;        /* 画面からはみ出さない */
+          object-fit: contain;    /* 綺麗に収める */
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      /* SD法のデザイン調整 */
+      .jspsych-survey-likert-statement { font-size: 16px; margin-top: 15px; font-weight: bold; }
+      .jspsych-survey-likert-opts { border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 15px; }
+      
+      /* テキストエリア（教示文など） */
+      .instruction-text { 
+          max-width: 800px; 
+          margin: 50px auto; 
+          text-align: left; 
+          line-height: 1.6; 
+      }
+  </style>
+</head>
+<body></body>
+<script src="experiment.js"></script>
+</html>
