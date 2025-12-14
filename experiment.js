@@ -159,21 +159,49 @@ jsPsych.data.addProperties({
     post_check_target_id: post_check_target_id
 });
 
-// 群割り当て
-timeline.push({
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: '実験の準備中...',
-    trial_duration: 500,
-    on_finish: function() {
-        const r = Math.random();
-        if (r < 0.33) CONDITION = 'A';
-        else if (r < 0.66) CONDITION = 'B';
-        else CONDITION = 'C';
-        jsPsych.data.addProperties({ condition: CONDITION });
-        console.log("Condition:", CONDITION);
-    }
-});
+// // 群割り当て
+// timeline.push({
+//     type: jsPsychHtmlKeyboardResponse,
+//     stimulus: '実験の準備中...',
+//     trial_duration: 500,
+//     on_finish: function() {
+//         const r = Math.random();
+//         if (r < 0.33) CONDITION = 'A';
+//         else if (r < 0.66) CONDITION = 'B';
+//         else CONDITION = 'C';
+//         jsPsych.data.addProperties({ condition: CONDITION });
+//         console.log("Condition:", CONDITION);
+//     }
+// });
 
+// 群割り当て (DataPipeによる均等割り付け)
+const condition_assignment_trial = {
+    type: jsPsychPipe,
+    action: "condition",
+    experiment_id: DATAPIPE_ID,
+    on_finish: function(data) {
+        // DataPipeから割り当てられた数値 (0, 1, 2 のいずれか) を取得
+        const assigned_condition_num = data.result;
+        
+        // 数値を A, B, C に変換してグローバル変数 CONDITION に入れる
+        if (assigned_condition_num === 0) {
+            CONDITION = 'A';
+        } else if (assigned_condition_num === 1) {
+            CONDITION = 'B';
+        } else {
+            CONDITION = 'C';
+        }
+
+        // データに記録
+        jsPsych.data.addProperties({ 
+            condition: CONDITION,
+            condition_num: assigned_condition_num 
+        });
+        
+        console.log("DataPipe Assigned Condition:", CONDITION);
+    }
+};
+timeline.push(condition_assignment_trial);
 
 
 
