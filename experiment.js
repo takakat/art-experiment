@@ -191,6 +191,7 @@ const condition_assignment_trial = {
         } else {
             CONDITION = 'A';
         }
+        CONDITION = 'A'; // 一時的に: 常にA群に固定
 
         // データに記録
         jsPsych.data.addProperties({ 
