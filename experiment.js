@@ -185,11 +185,11 @@ const condition_assignment_trial = {
         
         // 数値を A, B, C に変換してグローバル変数 CONDITION に入れる
         if (assigned_condition_num === 0) {
-            CONDITION = 'A';
+            CONDITION = 'C';
         } else if (assigned_condition_num === 1) {
             CONDITION = 'B';
         } else {
-            CONDITION = 'C';
+            CONDITION = 'A';
         }
 
         // データに記録
