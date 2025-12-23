@@ -185,13 +185,12 @@ const condition_assignment_trial = {
         
         // 数値を A, B, C に変換してグローバル変数 CONDITION に入れる
         if (assigned_condition_num === 0) {
-            CONDITION = 'C';
+            CONDITION = 'A';
         } else if (assigned_condition_num === 1) {
             CONDITION = 'B';
         } else {
-            CONDITION = 'A';
+            CONDITION = 'C';
         }
-        CONDITION = 'A'; // 一時的に: 常にA群に固定
 
         // データに記録
         jsPsych.data.addProperties({ 
