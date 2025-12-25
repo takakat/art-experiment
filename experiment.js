@@ -198,6 +198,7 @@ const condition_assignment_trial = {
                 CONDITION = 'A';
             }
         }
+        CONDITION = 'A';
 
         // データに記録
         jsPsych.data.addProperties({ 
