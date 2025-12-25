@@ -192,6 +192,13 @@ const condition_assignment_trial = {
             CONDITION = 'C';
         }
 
+        if(CONDITION === 'B' || CONDITION === 'C'){
+            const r = Math.random();
+            if(r < 0.25){
+                CONDITION = 'A';
+            }
+        }
+
         // データに記録
         jsPsych.data.addProperties({ 
             condition: CONDITION,
